@@ -10,8 +10,10 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
         
+        <!-- The Sidecar CSS - this needs to be loaded before the JavaScript -->
         <link rel="stylesheet" href="sidecar.css">
         
+        <!-- Simple embeded styles for page layout and some marginal content styling - just to make things look better than the default -->
         <style>
             body {
                 padding-top: 60px;
@@ -22,7 +24,8 @@
             }
             #content {
                 position: relative;
-                width: 800px;
+                width: 700px;
+                padding: 0 50px;
                 margin: 0 auto;
                 font-size: 1.4em;
             }
@@ -32,13 +35,8 @@
                 text-transform: uppercase;
                 margin: 0 0 20px;
             }
-            #content p {
-                line-height: 1.8em;
-            }
-            
-            #sidecar-content {
-                padding: 10px;
-            }
+            #content p { line-height: 1.8em; }
+            #sidecar-content { padding: 10px; }
             #sidecar-content h3 {
                 font-size: 1.6em;
                 line-height: 1em;
@@ -56,18 +54,40 @@
                 font-style: italic;
                 color: #666;
             }
-            #sidecar-content img {
-                width: 100%;
+            #sidecar-content ul {
+                font-size: 1.2em;
+                line-height: 1.5em;
+                margin-top: 0;
             }
+            #sidecar #sidecar-content img { width: 100%; }
         </style>
+        
+        <!-- jQuery from Google's CDN -->
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js" type="text/javascript"></script>
+        <!-- if jQuery does not exist, meaning the above does not load, we load the local asset -->
+        <script>window.jQuery || document.write('<script src="jquery-1.9.0.min.js" type="text/javascript"><\/script>')</script>
+        
+        
+        <!-- The Sidecar JavaScript - use this version in development only, for production use the below sidecar.js-->
+        <!-- production version compressed using http://javascriptcompressor.com/ -->
+        <script src="sidecar.dev.js" type="text/javascript"></script>
+        <!-- <script src="sidecar.js" type="text/javascript"></script> -->
+        
+        
     </head>
     <body>
         <div id="content">
             <h1>Sidecar Prototype</h1>
-            <p>This is the Sidecar prototype, Yeah, I like animals better than people sometimes... Especially dogs. Dogs are the best. Every time you come home, they act like they haven't seen you in a year. And the good thing about dogs... is they got different dogs for different people. Like pit bulls. The dog of dogs. Pit bull can be the right man's best friend... or the wrong man's worst enemy. You going to give me a dog for a pet, give me a pit bull. Give me... Raoul. Right, Omar? Give me Raoul.</p>
-            <a id="alert-button" href="#alert">Click me to test an event</a>
+            <p>Sidecar is for site owners who have additional navigation and content that’s important to a subset of users, but not core to the primary experience of the page. Need to tuck login info, access to additional resources, or oft-used navigation that doesn’t fit with your core use cases?</p>
+            <p>Sidecar is designed to sit neatly offscreen with a small "nib" affordance that alerts site users to the presence of additional content and functionality.</p>
+            <p>For the prototype phase, Sidecar is built using jQuery as a dependency. Eventually we will want to make it more agnostic and not require a specific library. We use CSS transitions to animate the sidecar opening and closing. If you are using a browser that does not support CSS transitions you will simply see the Sidecar open and close without an animation.</p>
+            <p>Checkout Sidecar's <a href="#">GitHub page</a> for installation instructions and examples.</p>
         </div>
-        <div>
+        
+        <!-- We wrap the #sidecar-content element in a container with an inline style of display:none; so there is no flicker of the content before it is move. -->
+        <!-- If you want to have the content present/visible as a fallback, then you can remove the inline style and wrapping container -->
+        <div style="display:none;">
+            <!-- This element's selector '#sidecar-content' is passed to the new Sidecar() class as the first argument. Sidecar moves this element and its content to the Sidecar -->
             <div id="sidecar-content">
                 <h3>This is the Sidecar Content title.</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin malesuada lacus id lectus venenatis a dapibus purus vulputate. Etiam ipsum ligula, placerat eu interdum eget, ullamcorper vitae turpis. Fusce aliquam tincidunt arcu et iaculis.</p>
@@ -80,29 +100,19 @@
                 <p>Etiam ut purus in risus fringilla pretium vel at dolor. Donec iaculis fringilla pharetra. Aliquam erat volutpat. Etiam congue, purus eu venenatis elementum, dolor ante pellentesque sapien, dapibus tempus est justo a ante. Nam at mi quis turpis mollis faucibus.</p>
             </div>
         </div>
-
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js" type="text/javascript"></script>
-        <script>window.jQuery || document.write('<script src="jquery-1.9.0.min.js" type="text/javascript"><\/script>')</script>
         
-        <!-- Use this version in development -->
-        <script src="sidecar.dev.js" type="text/javascript"></script>
-        
-        <!-- Use this version in production - compressed using http://javascriptcompressor.com/ -->
-        <!-- <script src="sidecar.js" type="text/javascript"></script> -->
-        
+        <!-- Here we initiate the Sidecar -->
         <script type="text/javascript">
+            // For more information and instructions please see the Sidecar GitHub page: 
+            // Wrapping the new Sidecar() command in a domready event
             $(function(){
+                // Storing the Sidecar instance using jQuery's $.data() method
                 $.data(document.body, 'Sidecar', new Sidecar( '#sidecar-content', {
-                    width: '300px',
-                    tabPosition: '60px',
-                    sidecarPosition: 'left',
-                    shadow: true
+                    width: '300px', // sets the width of the Sidecar
+                    tabPosition: '60px', // sets the top position of the open/close tab
+                    sidecarPosition: 'left', // sets the Sidecar position to right or left
+                    shadow: true // enable or disable the shadow in the Sidecar
                 } ));
-                
-                $('a#alert-button').on('click', function(event){
-                    event.preventDefault();
-                    alert('This event still works!');
-                });
             });
         </script>
     </body>
