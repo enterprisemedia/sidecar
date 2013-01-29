@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        
+        <link rel="stylesheet" href="sidecar.css">
+        
+        <style>
+            body {
+                padding-top: 60px;
+                padding-bottom: 40px;
+                font-family: sans-serif;
+                font-size: 10px;
+                line-height: 1em;
+            }
+            #content {
+                position: relative;
+                width: 800px;
+                margin: 0 auto;
+                font-size: 1.4em;
+            }
+            #content h1 {
+                font-size: 2.5em;
+                line-height: 1em;
+                text-transform: uppercase;
+                margin: 0 0 20px;
+            }
+            #content p {
+                line-height: 1.8em;
+            }
+            
+            #sidecar-content {
+                padding: 10px;
+            }
+            #sidecar-content h3 {
+                font-size: 1.6em;
+                line-height: 1em;
+                margin: 0 0 10px;
+            }
+            #sidecar-content p {
+                margin: 0 0 10px;
+                font-size: 1.2em;
+                line-height: 1.5em;
+            }
+            #sidecar-content p span {
+                display: block;
+                text-align: center;
+                font-size: 0.8em;
+                font-style: italic;
+                color: #666;
+            }
+            #sidecar-content img {
+                width: 100%;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="content">
+            <h1>Sidecar Prototype</h1>
+            <p>This is the Sidecar prototype, Yeah, I like animals better than people sometimes... Especially dogs. Dogs are the best. Every time you come home, they act like they haven't seen you in a year. And the good thing about dogs... is they got different dogs for different people. Like pit bulls. The dog of dogs. Pit bull can be the right man's best friend... or the wrong man's worst enemy. You going to give me a dog for a pet, give me a pit bull. Give me... Raoul. Right, Omar? Give me Raoul.</p>
+            <a id="alert-button" href="#alert">Click me to test an event</a>
+        </div>
+        <div>
+            <div id="sidecar-content">
+                <h3>This is the Sidecar Content title.</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin malesuada lacus id lectus venenatis a dapibus purus vulputate. Etiam ipsum ligula, placerat eu interdum eget, ullamcorper vitae turpis. Fusce aliquam tincidunt arcu et iaculis.</p>
+                <p><img src="sidecar-placeholder.jpg" alt="Sidecar Image" /><span>Hello</span></p>
+                <ul>
+                    <li>list item 1</li>
+                    <li>list item 2</li>
+                    <li>list item 3</li>
+                </ul>
+                <p>Etiam ut purus in risus fringilla pretium vel at dolor. Donec iaculis fringilla pharetra. Aliquam erat volutpat. Etiam congue, purus eu venenatis elementum, dolor ante pellentesque sapien, dapibus tempus est justo a ante. Nam at mi quis turpis mollis faucibus.</p>
+            </div>
+        </div>
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js" type="text/javascript"></script>
+        <script>window.jQuery || document.write('<script src="jquery-1.9.0.min.js" type="text/javascript"><\/script>')</script>
+        
+        <!-- Use this version in development -->
+        <script src="sidecar.dev.js" type="text/javascript"></script>
+        
+        <!-- Use this version in production - compressed using http://javascriptcompressor.com/ -->
+        <!-- <script src="sidecar.js" type="text/javascript"></script> -->
+        
+        <script type="text/javascript">
+            $(function(){
+                $.data(document.body, 'Sidecar', new Sidecar( '#sidecar-content', {
+                    width: '300px',
+                    tabPosition: '60px',
+                    sidecarPosition: 'left',
+                    shadow: true
+                } ));
+                
+                $('a#alert-button').on('click', function(event){
+                    event.preventDefault();
+                    alert('This event still works!');
+                });
+            });
+        </script>
+    </body>
+</html>
