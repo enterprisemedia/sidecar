@@ -63,25 +63,25 @@ var Sidecar;
             // Move the body's children into this wrapper
             while( document.body.firstChild ){
                 self.elems.sidecarWrapper.appendChild( document.body.firstChild );
-            }
+            };
             // Append the wrapper to the body
             document.body.appendChild( self.elems.sidecarWrapper );
-        }
+        };
         
         this.options.android = false;
         var ua = navigator.userAgent.toLowerCase();
         if( ua.indexOf("android") > -1 ) {
             this.options.android = true;
             
-            this.elems.body.addClass('noDrawerTransition');
-            this.elems.body.addClass('noFixedPosition');
-        }
+            this.elems.body.addClass( this.ns + '-no-drawer-transition');
+            this.elems.body.addClass( this.ns + '-no-fixed-position');
+        };
         
         if(typeof(opts) != "undefined"){
             for(var key in opts){
                 self.options[key] = opts[key];
-            }
-        }
+            };
+        };
         
         // Set Position of the Sidecar (left|right)
         this.elems.body.addClass('sidecar-' + self.options.sidecarPosition);
@@ -100,19 +100,19 @@ var Sidecar;
             style.type = 'text/css';
             
             // Negative values
-            css += "body.openDrawer #sidecar-wrapper,body.sidecar-left div#sidecar .sidecar-inner{left:-"+ self.options.width +";}\n";
-            css += "body.sidecar-left.openDrawer #sidecar-wrapper {right:-"+ self.options.width +";}\n";
+            css += "body.sidecar-open-drawer #sidecar-wrapper,body.sidecar-left div#sidecar .sidecar-inner{left:-"+ self.options.width +";}\n";
+            css += "body.sidecar-left.sidecar-open-drawer #sidecar-wrapper {right:-"+ self.options.width +";}\n";
 
             // Positive values
-            css += "body.openDrawer div#sidecar,body div#sidecar .sidecar-inner{width:"+ self.options.width +"}\n";
-            css += "body.openDrawer #sidecar-open,body.openDrawer #sidecar-open:link,body.openDrawer #sidecar-open:visited,body.openDrawer #sidecar-close,body.openDrawer #sidecar-close:link,body.openDrawer #sidecar-close:visited{right:"+ self.options.width +"}\n";
-            css += "body.sidecar-left.openDrawer #sidecar-open,body.sidecar-left.openDrawer #sidecar-open:link,body.sidecar-left.openDrawer #sidecar-open:visited,body.sidecar-left.openDrawer #sidecar-close,body.sidecar-left.openDrawer #sidecar-close:link,body.sidecar-left.openDrawer #sidecar-close:visited{left:"+ self.options.width +"}\n";
+            css += "body.sidecar-open-drawer div#sidecar,body div#sidecar .sidecar-inner{width:"+ self.options.width +"}\n";
+            css += "body.sidecar-open-drawer #sidecar-open,body.sidecar-open-drawer #sidecar-open:link,body.sidecar-open-drawer #sidecar-open:visited,body.sidecar-open-drawer #sidecar-close,body.sidecar-open-drawer #sidecar-close:link,body.sidecar-open-drawer #sidecar-close:visited{right:"+ self.options.width +"}\n";
+            css += "body.sidecar-left.sidecar-open-drawer #sidecar-open,body.sidecar-left.sidecar-open-drawer #sidecar-open:link,body.sidecar-left.sidecar-open-drawer #sidecar-open:visited,body.sidecar-left.sidecar-open-drawer #sidecar-close,body.sidecar-left.sidecar-open-drawer #sidecar-close:link,body.sidecar-left.sidecar-open-drawer #sidecar-close:visited{left:"+ self.options.width +"}\n";
             
             if( style.styleSheet ){
                 style.styleSheet.cssText = css;
             }else{
                 style.appendChild(document.createTextNode(css));
-            }
+            };
             
             head.appendChild(style);
         }
@@ -128,8 +128,8 @@ var Sidecar;
         
         // If shadow option is set to false, add class no-shadow
         if( !this.options.shadow ){
-            this.elems.drawerInner.addClass('no-shadow');
-        }
+            this.elems.drawerInner.addClass( this.ns + '-no-shadow');
+        };
         
         this.elems.sidecarContent.appendTo( this.elems.drawerInner );
         this.elems.drawerInner.css({
@@ -150,10 +150,10 @@ var Sidecar;
                 button.css({
                     marginTop: -height/2
                 });
-            }
+            };
             button.css({ top: self.options.tabPosition });
-        }
-    }
+        };
+    };
     
     // Add the open button
     window.Sidecar.prototype._addOpenButton = function(){
@@ -183,11 +183,11 @@ var Sidecar;
     };
     
     window.Sidecar.prototype.close = function(){
-        this.elems.body.removeClass('openDrawer');
+        this.elems.body.removeClass( this.ns + '-open-drawer');
     };
     
     window.Sidecar.prototype.open = function(){
-        this.elems.body.addClass('openDrawer');
+        this.elems.body.addClass( this.ns + '-open-drawer');
     };
     
 })(jQuery, window, null);

@@ -114,11 +114,11 @@ body div#sidecar .sidecar-inner {
          -o-transition: left 250ms ease-in-out, width 250ms ease-in-out, right 250ms ease-in-out;
             transition: left 250ms ease-in-out, width 250ms ease-in-out, right 250ms ease-in-out;
 }
-body.noDrawerTransition #sidecar-wrapper,
-body.noDrawerTransition #sidecar-open,
-body.noDrawerTransition #sidecar-close,
-body.noDrawerTransition div#sidecar,
-body.noDrawerTransition div#sidecar .sidecar-inner {
+body.sidecar-no-drawer-transition #sidecar-wrapper,
+body.sidecar-no-drawer-transition #sidecar-open,
+body.sidecar-no-drawer-transition #sidecar-close,
+body.sidecar-no-drawer-transition div#sidecar,
+body.sidecar-no-drawer-transition div#sidecar .sidecar-inner {
     -webkit-transition: none;
        -moz-transition: none;
         -ms-transition: none;
@@ -133,10 +133,10 @@ body.sidecar-left #sidecar-wrapper {
     left: auto;
     right: 0;
 }
-body.openDrawer #sidecar-wrapper {
+body.sidecar-open-drawer #sidecar-wrapper {
     left: -224px;
 }
-body.sidecar-left.openDrawer #sidecar-wrapper {
+body.sidecar-left.sidecar-open-drawer #sidecar-wrapper {
     left: auto;
     right: -224px;
 }
@@ -150,16 +150,16 @@ body div#sidecar {
     overflow: hidden;
     width: 0;
 }
-body.noFixedPosition div#sidecar { position: absolute; }
+body.sidecar-no-fixed-position div#sidecar { position: absolute; }
 body.sidecar-left div#sidecar {
     right: auto;
     left: 0;
 }
-body.openDrawer div#sidecar {
+body.sidecar-open-drawer div#sidecar {
     right: 0;
     width: 224px;
 }
-body.sidecar-left.openDrawer div#sidecar {
+body.sidecar-left.sidecar-open-drawer div#sidecar {
     right: auto;
     left: 0;
 }
@@ -168,11 +168,11 @@ body div#sidecar .sidecar-inner {
     height: 100%;
     box-shadow: inset 11px 0px 4px -10px rgba(0,0,0,0.31), inset -10px 0px 4px -10px rgba(0,0,0,0.31);
 }
-body div#sidecar .sidecar-inner.no-shadow {
+body div#sidecar .sidecar-inner.sidecar-no-shadow {
 	box-shadow: none;
 }
 body.sidecar-left div#sidecar .sidecar-inner { left: -224px; }
-body.sidecar-left.openDrawer div#sidecar .sidecar-inner { left: 0; }
+body.sidecar-left.sidecar-open-drawer div#sidecar .sidecar-inner { left: 0; }
 body #sidecar-open div.bar,
 body #sidecar-close div.bar {
     width: 4px;
@@ -251,12 +251,12 @@ body #sidecar-close:visited {
     right: 0;
     z-index: 25337;
 }
-body.noFixedPosition #sidecar-open,
-body.noFixedPosition #sidecar-open:link,
-body.noFixedPosition #sidecar-open:visited,
-body.noFixedPosition #sidecar-close,
-body.noFixedPosition #sidecar-close:link,
-body.noFixedPosition #sidecar-close:visited {
+body.sidecar-no-fixed-position #sidecar-open,
+body.sidecar-no-fixed-position #sidecar-open:link,
+body.sidecar-no-fixed-position #sidecar-open:visited,
+body.sidecar-no-fixed-position #sidecar-close,
+body.sidecar-no-fixed-position #sidecar-close:link,
+body.sidecar-no-fixed-position #sidecar-close:visited {
     position: absolute;
 }
 body.sidecar-left #sidecar-open,
@@ -282,29 +282,29 @@ body.sidecar-left #sidecar-close:visited {
     left: 0;
     right: auto;
 }
-body.openDrawer #sidecar-open,
-body.openDrawer #sidecar-open:link,
-body.openDrawer #sidecar-open:visited {
+body.sidecar-open-drawer #sidecar-open,
+body.sidecar-open-drawer #sidecar-open:link,
+body.sidecar-open-drawer #sidecar-open:visited {
     visibility: hidden;
     opacity: 0;
     right: 224px;
 }
-body.sidecar-left.openDrawer #sidecar-open,
-body.sidecar-left.openDrawer #sidecar-open:link,
-body.sidecar-left.openDrawer #sidecar-open:visited {
+body.sidecar-left.sidecar-open-drawer #sidecar-open,
+body.sidecar-left.sidecar-open-drawer #sidecar-open:link,
+body.sidecar-left.sidecar-open-drawer #sidecar-open:visited {
     left: 224px;
     right: auto;
 }
-body.openDrawer #sidecar-close,
-body.openDrawer #sidecar-close:link,
-body.openDrawer #sidecar-close:visited {
+body.sidecar-open-drawer #sidecar-close,
+body.sidecar-open-drawer #sidecar-close:link,
+body.sidecar-open-drawer #sidecar-close:visited {
     visibility: visible;
     opacity: 1;
     right: 224px;
 }
-body.sidecar-left.openDrawer #sidecar-close,
-body.sidecar-left.openDrawer #sidecar-close:link,
-body.sidecar-left.openDrawer #sidecar-close:visited {
+body.sidecar-left.sidecar-open-drawer #sidecar-close,
+body.sidecar-left.sidecar-open-drawer #sidecar-close:link,
+body.sidecar-left.sidecar-open-drawer #sidecar-close:visited {
     left: 224px;
     right: auto;
 }
